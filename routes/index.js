@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
 
 router.get('/add-to-cart/:id', function (req, res) {
   let productId = req.params.id;
-  let cart = new Cart(req.session.cart ? req.session.cart : {});
+  let cart = new Cart(req.session.cart ? req.session.cart : {});  //if(req.session.cart) req.session.cart else {}
   Product.findById(productId)
     .then(product => {
       cart.add(product, product.id);
